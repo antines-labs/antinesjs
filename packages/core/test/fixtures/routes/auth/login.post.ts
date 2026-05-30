@@ -1,5 +1,5 @@
-import { defineRoute } from '../../../../src/index.js'
-import { s } from '@antinesjs/schema'
+import { defineRoute } from "../../../../src/index.js";
+import { s } from "@antinesjs/schema";
 
 export default defineRoute({
   schema: {
@@ -15,10 +15,10 @@ export default defineRoute({
       }),
     }),
     errors: {
-      invalid_credentials: { status: 401, message: 'E-mail ou senha inválidos' },
+      invalid_credentials: { status: 401, message: "E-mail ou senha inválidos" },
     },
   },
   handler: async (ctx) => {
-    return ctx
+    return ctx;
   },
-})
+});

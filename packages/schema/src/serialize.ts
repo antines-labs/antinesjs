@@ -1,7 +1,4 @@
-import {
-  OptionalSchema,
-  NullableSchema,
-} from './builders.js'
+import { OptionalSchema, NullableSchema } from "./builders.js";
 import type {
   SchemaNode,
   StringSchema,
@@ -15,61 +12,61 @@ import type {
   NumberValidations,
   DateValidations,
   ArrayValidations,
-} from './builders.js'
+} from "./builders.js";
 
 // ---- Schema IR JSON types ----
 
 export interface StringIR {
-  type: 'string'
-  validations: StringValidations
+  type: "string";
+  validations: StringValidations;
 }
 
 export interface NumberIR {
-  type: 'number'
-  validations: NumberValidations
+  type: "number";
+  validations: NumberValidations;
 }
 
 export interface BooleanIR {
-  type: 'boolean'
+  type: "boolean";
 }
 
 export interface EnumIR {
-  type: 'enum'
-  values: string[]
+  type: "enum";
+  values: string[];
 }
 
 export interface DateIR {
-  type: 'date'
-  validations: DateValidations
+  type: "date";
+  validations: DateValidations;
 }
 
 export interface ArrayIR {
-  type: 'array'
-  items: SchemaIR
-  validations: ArrayValidations
+  type: "array";
+  items: SchemaIR;
+  validations: ArrayValidations;
 }
 
 export interface FieldIR {
-  schema: SchemaIR
-  optional: boolean
-  nullable: boolean
-  description?: string
+  schema: SchemaIR;
+  optional: boolean;
+  nullable: boolean;
+  description?: string;
 }
 
 export interface ObjectIR {
-  type: 'object'
-  fields: Record<string, FieldIR>
-  strict: boolean
+  type: "object";
+  fields: Record<string, FieldIR>;
+  strict: boolean;
 }
 
 export interface NullableIR {
-  type: 'nullable'
-  inner: SchemaIR
+  type: "nullable";
+  inner: SchemaIR;
 }
 
 export interface OptionalIR {
-  type: 'optional'
-  inner: SchemaIR
+  type: "optional";
+  inner: SchemaIR;
 }
 
 export type SchemaIR =
@@ -81,29 +78,29 @@ export type SchemaIR =
   | ArrayIR
   | ObjectIR
   | NullableIR
-  | OptionalIR
+  | OptionalIR;
 
 // ---- Serializer ----
 
 function serializeField(val: SchemaNode | FieldDef): FieldIR {
-  if ('schema' in val && val.schema !== undefined) {
-    const def = val as FieldDef
+  if ("schema" in val && val.schema !== undefined) {
+    const def = val as FieldDef;
     return {
       schema: serialize(def.schema),
       optional: def.optional ?? false,
       nullable: def.nullable ?? false,
       description: def.description,
-    }
+    };
   }
 
-  const node = val as SchemaNode
+  const node = val as SchemaNode;
 
   if (node instanceof OptionalSchema) {
     return {
       schema: serialize(node.inner),
       optional: true,
       nullable: false,
-    }
+    };
   }
 
   if (node instanceof NullableSchema) {
@@ -111,95 +108,95 @@ function serializeField(val: SchemaNode | FieldDef): FieldIR {
       schema: serialize(node.inner),
       optional: false,
       nullable: true,
-    }
+    };
   }
 
   return {
     schema: serialize(node),
     optional: false,
     nullable: false,
-  }
+  };
 }
 
 export function serialize(node: SchemaNode): SchemaIR {
   switch (node.type) {
-    case 'string': {
-      const n = node as StringSchema
+    case "string": {
+      const n = node as StringSchema;
       return {
-        type: 'string',
+        type: "string",
         validations: { ...n.validations },
-      } satisfies StringIR
+      } satisfies StringIR;
     }
 
-    case 'number': {
-      const n = node as NumberSchema
+    case "number": {
+      const n = node as NumberSchema;
       return {
-        type: 'number',
+        type: "number",
         validations: { ...n.validations },
-      } satisfies NumberIR
+      } satisfies NumberIR;
     }
 
-    case 'boolean': {
-      return { type: 'boolean' } satisfies BooleanIR
+    case "boolean": {
+      return { type: "boolean" } satisfies BooleanIR;
     }
 
-    case 'enum': {
-      const n = node as EnumSchema
+    case "enum": {
+      const n = node as EnumSchema;
       return {
-        type: 'enum',
+        type: "enum",
         values: [...n.values],
-      } satisfies EnumIR
+      } satisfies EnumIR;
     }
 
-    case 'date': {
-      const n = node as DateSchema
+    case "date": {
+      const n = node as DateSchema;
       return {
-        type: 'date',
+        type: "date",
         validations: { ...n.validations },
-      } satisfies DateIR
+      } satisfies DateIR;
     }
 
-    case 'array': {
-      const n = node as ArraySchema
+    case "array": {
+      const n = node as ArraySchema;
       return {
-        type: 'array',
+        type: "array",
         items: serialize(n.items),
         validations: { ...n.validations },
-      } satisfies ArrayIR
+      } satisfies ArrayIR;
     }
 
-    case 'object': {
-      const n = node as ObjectSchema
-      const fields: Record<string, FieldIR> = {}
+    case "object": {
+      const n = node as ObjectSchema;
+      const fields: Record<string, FieldIR> = {};
       for (const key of Object.keys(n.fields)) {
-        const val = n.fields[key]
-        if (val === undefined) continue
-        fields[key] = serializeField(val)
+        const val = n.fields[key];
+        if (val === undefined) continue;
+        fields[key] = serializeField(val);
       }
       return {
-        type: 'object',
+        type: "object",
         fields,
         strict: n._strict,
-      } satisfies ObjectIR
+      } satisfies ObjectIR;
     }
 
-    case 'nullable': {
-      const n = node as NullableSchema
+    case "nullable": {
+      const n = node as NullableSchema;
       return {
-        type: 'nullable',
+        type: "nullable",
         inner: serialize(n.inner),
-      } satisfies NullableIR
+      } satisfies NullableIR;
     }
 
-    case 'optional': {
-      const n = node as OptionalSchema
+    case "optional": {
+      const n = node as OptionalSchema;
       return {
-        type: 'optional',
+        type: "optional",
         inner: serialize(n.inner),
-      } satisfies OptionalIR
+      } satisfies OptionalIR;
     }
 
     default:
-      throw new Error(`Unknown schema type: ${(node as SchemaNode).type}`)
+      throw new Error(`Unknown schema type: ${(node as SchemaNode).type}`);
   }
 }

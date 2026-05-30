@@ -1,21 +1,21 @@
-import type { SchemaNode } from '@antinesjs/schema'
+import type { SchemaNode } from "@antinesjs/schema";
 
 // ---- Types ----
 
 export interface ErrorDef {
-  status: number
-  message: string
+  status: number;
+  message: string;
 }
 
 export interface RouteSchema {
-  input?: SchemaNode
-  output?: SchemaNode
-  errors?: Record<string, ErrorDef>
+  input?: SchemaNode;
+  output?: SchemaNode;
+  errors?: Record<string, ErrorDef>;
 }
 
 export interface RouteConfig {
-  schema: RouteSchema
-  handler?: (ctx: Record<string, unknown>) => Promise<Record<string, unknown>>
+  schema: RouteSchema;
+  handler?: (ctx: Record<string, unknown>) => Promise<Record<string, unknown>>;
 }
 
 // ---- defineRoute ----
@@ -38,7 +38,7 @@ export interface RouteConfig {
  */
 export function defineRoute(config: RouteConfig): RouteConfig {
   if (!config.schema) {
-    throw new Error('defineRoute: schema is required')
+    throw new Error("defineRoute: schema is required");
   }
-  return config
+  return config;
 }

@@ -1,12 +1,12 @@
-import { defineRoute } from '../../../src/index.js'
-import { s } from '@antinesjs/schema'
+import { defineRoute } from "../../../src/index.js";
+import { s } from "@antinesjs/schema";
 
 export default defineRoute({
   schema: {
     input: s.object({
       name: s.string().min(2).max(100),
       email: s.string().email(),
-      role: s.enum(['admin', 'member', 'viewer']),
+      role: s.enum(["admin", "member", "viewer"]),
     }),
     output: s.object({
       id: s.string().uuid(),
@@ -15,10 +15,10 @@ export default defineRoute({
       createdAt: s.date(),
     }),
     errors: {
-      email_taken: { status: 409, message: 'Este e-mail já está em uso' },
+      email_taken: { status: 409, message: "Este e-mail já está em uso" },
     },
   },
   handler: async (ctx) => {
-    return ctx
+    return ctx;
   },
-})
+});

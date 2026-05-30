@@ -1,5 +1,5 @@
-import { defineRoute } from '../../../src/index.js'
-import { s } from '@antinesjs/schema'
+import { defineRoute } from "../../../src/index.js";
+import { s } from "@antinesjs/schema";
 
 export default defineRoute({
   schema: {
@@ -9,4 +9,4 @@ export default defineRoute({
     }),
   },
   // no handler, because Go-only
-})
+});

@@ -8,9 +8,9 @@ import {
   ObjectSchema,
   NullableSchema,
   OptionalSchema,
-} from './builders.js'
-import type { SchemaNode, FieldDef } from './builders.js'
-import { serialize } from './serialize.js'
+} from "./builders.js";
+import type { SchemaNode, FieldDef } from "./builders.js";
+import { serialize } from "./serialize.js";
 
 export {
   StringSchema,
@@ -22,10 +22,10 @@ export {
   ObjectSchema,
   NullableSchema,
   OptionalSchema,
-}
-export type { SchemaNode, FieldDef }
+};
+export type { SchemaNode, FieldDef };
 
-export { serialize }
+export { serialize };
 export type {
   SchemaIR,
   StringIR,
@@ -38,7 +38,7 @@ export type {
   FieldIR,
   NullableIR,
   OptionalIR,
-} from './serialize.ts'
+} from "./serialize.ts";
 
 /**
  * Schema DSL — entry point for defining schemas.
@@ -66,4 +66,4 @@ export const s = {
   nullable: (inner: SchemaNode) => new NullableSchema(inner),
   optional: (inner: SchemaNode) => new OptionalSchema(inner),
   serialize,
-}
+};
