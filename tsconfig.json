@@ -1,0 +1,3 @@
+{
+  "extends": "@antinesjs/config/tsconfig.base.json"
+}
