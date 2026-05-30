@@ -4,7 +4,7 @@
     "outDir": "dist",
     "declaration": true,
     "declarationMap": true,
-    "types": []
+    "types": ["node"]
   },
   "include": ["src"]
 }
