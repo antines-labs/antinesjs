@@ -18,7 +18,7 @@ export default defineRoute({
       invalid_credentials: { status: 401, message: "E-mail ou senha inválidos" },
     },
   },
-  handler: async (ctx) => {
-    return ctx;
+  handler: async (_ctx) => {
+    return { token: "abc", user: { id: crypto.randomUUID(), name: _ctx.email } };
   },
 });

@@ -88,9 +88,9 @@ fi
 
 # Test 4: POST /echo
 echo "Test 4: POST /echo"
-RESP=$(curl -s -X POST "http://localhost:$SERVER_PORT/echo" -H "Content-Type: application/json" -d '{"message":"Hello World"}')
+RESP=$(curl -s -X POST "http://localhost:$SERVER_PORT/echo" -H "Content-Type: application/json" -d '{"message":"Hello World","autor":"Alice"}')
 echo "  Response: $RESP"
-if echo "$RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); assert d['echoed']=='Hello World', f'expected echoed message, got {d}'" 2>/dev/null; then
+if echo "$RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); assert d['echoed']=='Echo: Hello World (by Alice)', f'expected Echo: Hello World (by Alice), got {d}'" 2>/dev/null; then
   echo "  ✓ PASS"
 else
   echo "  ✗ FAIL"

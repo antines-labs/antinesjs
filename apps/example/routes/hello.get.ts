@@ -11,6 +11,6 @@ export default defineRoute({
     }),
   },
   handler: async (ctx) => {
-    return { message: `Hello, ${ctx.name ?? 'World'}!` }
+    return { message: `Hello, ${ctx.name}!` }
   },
 })

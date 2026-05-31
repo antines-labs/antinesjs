@@ -13,10 +13,14 @@ export interface RouteSchema {
   errors?: Record<string, ErrorDef>;
 }
 
-export interface RouteConfig {
+export interface RouteConfig<In = Record<string, unknown>, Out = Record<string, unknown>> {
   schema: RouteSchema;
-  handler?: (ctx: Record<string, unknown>) => Promise<Record<string, unknown>>;
+  handler?: (ctx: In) => Promise<Out>;
 }
+
+// ---- TypeOf helper ----
+
+type TypeOf<T> = T extends { _type: infer U } ? U : Record<string, unknown>;
 
 // ---- defineRoute ----
 
@@ -31,14 +35,23 @@ export interface RouteConfig {
  *     output: s.object({ id: s.string() }),
  *   },
  *   handler: async (ctx) => {
- *     return ctx.ok({ id: '123' })
+ *     return { id: '123' }
  *   },
  * })
  * ```
  */
-export function defineRoute(config: RouteConfig): RouteConfig {
+export function defineRoute<In, Out>(
+  config: {
+    schema: {
+      input?: In;
+      output?: Out;
+      errors?: Record<string, ErrorDef>;
+    };
+    handler?: (ctx: TypeOf<In>) => Promise<TypeOf<Out>>;
+  },
+): RouteConfig<TypeOf<In>, TypeOf<Out>> {
   if (!config.schema) {
     throw new Error("defineRoute: schema is required");
   }
-  return config;
+  return config as unknown as RouteConfig<TypeOf<In>, TypeOf<Out>>;
 }

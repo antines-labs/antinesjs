@@ -16,6 +16,18 @@
         "typescript": "^6",
       },
     },
+    "apps/example": {
+      "name": "example",
+      "dependencies": {
+        "@antinesjs/core": "workspace:*",
+        "@antinesjs/protocol": "workspace:*",
+        "@antinesjs/schema": "workspace:*",
+        "@antinesjs/worker": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/node": "^25.9.1",
+      },
+    },
     "apps/fumadocs": {
       "name": "fumadocs",
       "version": "0.0.0",
@@ -552,6 +564,8 @@
     "estree-util-visit": ["estree-util-visit@2.0.0", "", { "dependencies": { "@types/estree-jsx": "^1.0.0", "@types/unist": "^3.0.0" } }, "sha512-m5KgiH85xAhhW8Wta0vShLcUvOsh3LLPI2YVwcbio1l7E09NTLL1EyMZFM1OyWowoH0skScNbhOPl4kcBgzTww=="],
 
     "estree-walker": ["estree-walker@3.0.3", "", { "dependencies": { "@types/estree": "^1.0.0" } }, "sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g=="],
+
+    "example": ["example@workspace:apps/example"],
 
     "extend": ["extend@3.0.2", "", {}, "sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g=="],
 

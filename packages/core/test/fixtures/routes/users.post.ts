@@ -18,7 +18,7 @@ export default defineRoute({
       email_taken: { status: 409, message: "Este e-mail já está em uso" },
     },
   },
-  handler: async (ctx) => {
-    return ctx;
+  handler: async (_ctx) => {
+    return { id: crypto.randomUUID(), name: _ctx.name, email: _ctx.email, createdAt: new Date() };
   },
 });

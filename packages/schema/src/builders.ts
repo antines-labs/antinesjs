@@ -47,6 +47,7 @@ export interface FieldDef {
 
 export class StringSchema {
   readonly type = "string" as const;
+  declare readonly _type: string;
   validations: StringValidations = {};
 
   min(n: number): this {
@@ -82,6 +83,7 @@ export class StringSchema {
 
 export class NumberSchema {
   readonly type = "number" as const;
+  declare readonly _type: number;
   validations: NumberValidations = {};
 
   int(): this {
@@ -112,22 +114,25 @@ export class NumberSchema {
 
 export class BooleanSchema {
   readonly type = "boolean" as const;
+  declare readonly _type: boolean;
 }
 
-export class EnumSchema {
+export class EnumSchema<const T extends readonly string[] = string[]> {
   readonly type = "enum" as const;
-  values: string[];
+  declare readonly _type: T[number];
+  values: T[number][];
 
-  constructor(values: string[]) {
+  constructor(values: T) {
     if (values.length === 0) {
       throw new Error("Enum must have at least one value");
     }
-    this.values = values;
+    this.values = [...values];
   }
 }
 
 export class DateSchema {
   readonly type = "date" as const;
+  declare readonly _type: Date;
   validations: DateValidations = {};
 
   min(iso: string): this {
@@ -141,12 +146,13 @@ export class DateSchema {
   }
 }
 
-export class ArraySchema {
+export class ArraySchema<Item extends { _type: unknown } = SchemaNode> {
   readonly type = "array" as const;
-  items: SchemaNode;
+  declare readonly _type: Item["_type"][];
+  items: Item;
   validations: ArrayValidations = {};
 
-  constructor(items: SchemaNode) {
+  constructor(items: Item) {
     this.items = items;
   }
 
@@ -166,12 +172,25 @@ export class ArraySchema {
   }
 }
 
-export class ObjectSchema {
+type InferFieldType<T> =
+  T extends OptionalSchema<infer Inner>
+    ? Inner["_type"] | undefined
+    : T extends NullableSchema<infer Inner>
+      ? Inner["_type"] | null
+      : T extends { _type: infer U }
+        ? U
+        : T extends FieldDef
+          ? (T["optional"] extends true ? T["schema"]["_type"] | undefined : T["schema"]["_type"])
+            | (T["nullable"] extends true ? null : never)
+          : never;
+
+export class ObjectSchema<Fields = Record<string, SchemaNode | FieldDef>> {
   readonly type = "object" as const;
-  fields: Record<string, SchemaNode | FieldDef>;
+  declare readonly _type: { [K in keyof Fields]: InferFieldType<Fields[K]> };
+  fields: Fields;
   _strict: boolean = false;
 
-  constructor(fields: Record<string, SchemaNode | FieldDef>) {
+  constructor(fields: Fields) {
     this.fields = fields;
   }
 
@@ -181,20 +200,22 @@ export class ObjectSchema {
   }
 }
 
-export class NullableSchema {
+export class NullableSchema<Inner extends { _type: unknown } = SchemaNode> {
   readonly type = "nullable" as const;
-  inner: SchemaNode;
+  declare readonly _type: Inner["_type"] | null;
+  inner: Inner;
 
-  constructor(inner: SchemaNode) {
+  constructor(inner: Inner) {
     this.inner = inner;
   }
 }
 
-export class OptionalSchema {
+export class OptionalSchema<Inner extends { _type: unknown } = SchemaNode> {
   readonly type = "optional" as const;
-  inner: SchemaNode;
+  declare readonly _type: Inner["_type"] | undefined;
+  inner: Inner;
 
-  constructor(inner: SchemaNode) {
+  constructor(inner: Inner) {
     this.inner = inner;
   }
 }

@@ -59,10 +59,19 @@
         "input": {
           "type": "object",
           "fieldOrder": [
-            "message"
+            "message",
+            "autor"
           ],
           "fields": {
             "message": {
+              "schema": {
+                "type": "string",
+                "validations": {}
+              },
+              "optional": false,
+              "nullable": false
+            },
+            "autor": {
               "schema": {
                 "type": "string",
                 "validations": {}

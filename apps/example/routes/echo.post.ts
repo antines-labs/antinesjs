@@ -5,12 +5,13 @@ export default defineRoute({
   schema: {
     input: s.object({
       message: s.string(),
+      autor: s.string(),
     }),
     output: s.object({
       echoed: s.string(),
     }),
   },
   handler: async (ctx) => {
-    return { echoed: ctx.message as string }
+    return { echoed: `Echo: ${ctx.message} (by ${ctx.autor})` }
   },
 })
