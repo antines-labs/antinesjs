@@ -55,6 +55,7 @@ export interface FieldIR {
 
 export interface ObjectIR {
   type: "object";
+  fieldOrder: string[];
   fields: Record<string, FieldIR>;
   strict: boolean;
 }
@@ -167,14 +168,16 @@ export function serialize(node: SchemaNode): SchemaIR {
 
     case "object": {
       const n = node as ObjectSchema;
+      const keys = Object.keys(n.fields);
       const fields: Record<string, FieldIR> = {};
-      for (const key of Object.keys(n.fields)) {
+      for (const key of keys) {
         const val = n.fields[key];
         if (val === undefined) continue;
         fields[key] = serializeField(val);
       }
       return {
         type: "object",
+        fieldOrder: keys,
         fields,
         strict: n._strict,
       } satisfies ObjectIR;

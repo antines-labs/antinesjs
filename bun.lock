@@ -54,6 +54,16 @@
         "@types/node": "^25.9.1",
       },
     },
+    "packages/protocol": {
+      "name": "@antinesjs/protocol",
+      "version": "0.1.0",
+      "dependencies": {
+        "@antinesjs/schema": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/node": "^25.9.1",
+      },
+    },
     "packages/schema": {
       "name": "@antinesjs/schema",
       "version": "0.1.0",
@@ -65,6 +75,8 @@
     "@antinesjs/config": ["@antinesjs/config@workspace:packages/config"],
 
     "@antinesjs/core": ["@antinesjs/core@workspace:packages/core"],
+
+    "@antinesjs/protocol": ["@antinesjs/protocol@workspace:packages/protocol"],
 
     "@antinesjs/schema": ["@antinesjs/schema@workspace:packages/schema"],
 
