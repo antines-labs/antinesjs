@@ -65,6 +65,7 @@ export async function generateManifest(options: GenerateOptions): Promise<Manife
     handlerId++;
 
     const relPath = relative(routesDir, absolutePath);
+    const basePath = options.baseDir ? relative(options.baseDir, absolutePath) : relPath;
     const scanned = scanRouteFile(relPath);
 
     const mod = await import(absolutePath);
@@ -81,7 +82,7 @@ export async function generateManifest(options: GenerateOptions): Promise<Manife
       method: scanned.method,
       path: scanned.path,
       handlerId,
-      handlerFile: relPath,
+      handlerFile: basePath,
       hasHandler,
       params: scanned.params,
       schema: {},
