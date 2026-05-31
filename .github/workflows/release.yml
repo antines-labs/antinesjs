@@ -34,4 +34,4 @@ jobs:
 
       - name: Publish to npm via Trusted Publishing
         if: steps.changesets.outputs.hasChangesets == 'false'
-        run: bunx changeset publish --provenance
+        run: bunx changeset publish
