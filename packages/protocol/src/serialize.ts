@@ -49,6 +49,7 @@ export function serializeOutput(layout: CompiledLayout, data: Record<string, unk
     if (f.category === FieldCategory.Fixed) {
       const offset = bitmaskSize + f.offset
       encodeFixedField(f, val, view, offset)
+      continue
     }
 
     const enc = encodeVariableField(f, val)
