@@ -11,24 +11,11 @@ console.log(JSON.stringify(manifest, null, 2));
 assert(manifest.version === 1);
 assert(manifest.routes.length === 3);
 
-// route 1: POST /users
-const usersPost = manifest.routes[0]!;
-assert(usersPost.method === "POST");
-assert(usersPost.path === "/users");
-assert(usersPost.handlerId === 1);
-assert(usersPost.hasHandler === true);
-assert(usersPost.params.length === 0);
-assert(usersPost.schema.input !== undefined);
-assert(usersPost.schema.input.type === "object");
-assert(usersPost.schema.output !== undefined);
-assert(usersPost.schema.errors?.["email_taken"] !== undefined);
-assert(usersPost.schema.errors["email_taken"].status === 409);
-
-// route 2: POST /auth/login
-const login = manifest.routes[1]!;
+// route 1: POST /auth/login (alphabetically first)
+const login = manifest.routes[0]!;
 assert(login.method === "POST");
 assert(login.path === "/auth/login");
-assert(login.handlerId === 2);
+assert(login.handlerId === 1);
 assert(login.hasHandler === true);
 assert(login.schema.input !== undefined);
 assert(login.schema.output !== undefined);
@@ -38,15 +25,28 @@ const userField = loginOutput.fields["user"];
 assert(userField !== undefined);
 assert(userField.schema.type === "object");
 
-// route 3: GET /health (Go-only)
-const health = manifest.routes[2]!;
+// route 2: GET /health (Go-only, handlerId=2)
+const health = manifest.routes[1]!;
 assert(health.method === "GET");
 assert(health.path === "/health");
-assert(health.handlerId === 3);
+assert(health.handlerId === 2);
 assert(health.hasHandler === false);
 assert(health.schema.input === undefined);
 assert(health.schema.output !== undefined);
 assert(health.schema.output.type === "object");
+
+// route 3: POST /users (handlerId=3)
+const usersPost = manifest.routes[2]!;
+assert(usersPost.method === "POST");
+assert(usersPost.path === "/users");
+assert(usersPost.handlerId === 3);
+assert(usersPost.hasHandler === true);
+assert(usersPost.params.length === 0);
+assert(usersPost.schema.input !== undefined);
+assert(usersPost.schema.input.type === "object");
+assert(usersPost.schema.output !== undefined);
+assert(usersPost.schema.errors?.["email_taken"] !== undefined);
+assert(usersPost.schema.errors["email_taken"].status === 409);
 
 console.log("\n--- All manifest generation tests passed! ---");
 

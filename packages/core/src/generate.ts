@@ -125,6 +125,7 @@ export async function generateManifest(options: GenerateOptions): Promise<Manife
         result.push(fullPath);
       }
     }
+    result.sort();
     return result;
   }
 }
