@@ -1,0 +1,18 @@
+{
+  "name": "example",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@antinesjs/core": "workspace:*",
+    "@antinesjs/schema": "workspace:*",
+    "@antinesjs/worker": "workspace:*",
+    "@antinesjs/protocol": "workspace:*"
+  },
+  "scripts": {
+    "generate": "bun run scripts/generate-manifest.ts",
+    "start": "bun run worker-entry.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1"
+  }
+}
