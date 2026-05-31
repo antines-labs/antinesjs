@@ -12,9 +12,9 @@ import {
   calculateLayout,
   deserializeInput,
   serializeOutput,
-} from "@antinesjs/protocol";
-import type { Header, CompiledLayout } from "@antinesjs/protocol";
-import type { ObjectIR } from "@antinesjs/schema";
+} from "@antines/protocol";
+import type { Header, CompiledLayout } from "@antines/protocol";
+import type { ObjectIR } from "@antines/schema";
 
 interface RouteManifest {
   method: string;

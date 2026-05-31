@@ -1,4 +1,4 @@
-import type { SchemaNode } from "@antinesjs/schema";
+import type { SchemaNode } from "@antines/schema";
 
 // ---- Types ----
 

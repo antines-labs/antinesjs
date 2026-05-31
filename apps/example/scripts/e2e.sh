@@ -4,8 +4,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 APP_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-ANTINESJS_DIR="$(cd "$APP_DIR/../.." && pwd)"
-CORE_DIR="$(cd "$ANTINESJS_DIR/../core" && pwd)"
+antines_DIR="$(cd "$APP_DIR/../.." && pwd)"
+CORE_DIR="$(cd "$antines_DIR/../core" && pwd)"
 
 echo "=== Step 1: Generate manifest ==="
 cd "$APP_DIR"

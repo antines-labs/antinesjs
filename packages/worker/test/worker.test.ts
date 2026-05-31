@@ -12,8 +12,8 @@ import {
   calculateLayout,
   serializeOutput,
   deserializeInput,
-} from "@antinesjs/protocol";
-import type { ObjectIR } from "@antinesjs/schema";
+} from "@antines/protocol";
+import type { ObjectIR } from "@antines/schema";
 import { WorkerRuntime } from "../src/runtime.js";
 
 const inputSchema: ObjectIR = {

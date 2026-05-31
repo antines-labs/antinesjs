@@ -1,4 +1,4 @@
-import { WorkerRuntime } from "@antinesjs/worker";
+import { WorkerRuntime } from "@antines/worker";
 import { parseArgs } from "node:util";
 
 const args = parseArgs({

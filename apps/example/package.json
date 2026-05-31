@@ -7,10 +7,10 @@
     "start": "bun run worker-entry.ts"
   },
   "dependencies": {
-    "@antinesjs/core": "workspace:*",
-    "@antinesjs/protocol": "workspace:*",
-    "@antinesjs/schema": "workspace:*",
-    "@antinesjs/worker": "workspace:*"
+    "@antines/core": "workspace:*",
+    "@antines/protocol": "workspace:*",
+    "@antines/schema": "workspace:*",
+    "@antines/worker": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^25.9.1"

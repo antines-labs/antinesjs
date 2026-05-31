@@ -2,7 +2,7 @@ import { calculateLayout } from "../src/layout.js";
 import { serializeOutput, deserializeInput } from "../src/serialize.js";
 import { encodeHeader, decodeHeader, newHeader } from "../src/header.js";
 import { Direction, MessageType } from "../src/types.js";
-import type { ObjectIR } from "@antinesjs/schema";
+import type { ObjectIR } from "@antines/schema";
 
 // ---- Header tests ----
 

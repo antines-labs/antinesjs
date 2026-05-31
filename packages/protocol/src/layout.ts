@@ -1,4 +1,4 @@
-import type { SchemaIR, ObjectIR } from "@antinesjs/schema";
+import type { SchemaIR, ObjectIR } from "@antines/schema";
 import { FieldType, FieldCategory, type FieldLayout, type CompiledLayout } from "./types.js";
 
 /**

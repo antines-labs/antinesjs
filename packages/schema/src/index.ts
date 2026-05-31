@@ -44,7 +44,7 @@ export type {
  * Schema DSL — entry point for defining schemas.
  *
  * ```ts
- * import { s } from '@antinesjs/schema'
+ * import { s } from '@antines/schema'
  *
  * const User = s.object({
  *   name: s.string().min(2).max(100),

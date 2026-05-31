@@ -1,5 +1,5 @@
 {
-  "extends": "@antinesjs/config/tsconfig.base.json",
+  "extends": "@antines/config/tsconfig.base.json",
   "compilerOptions": {
     "outDir": "dist"
   },

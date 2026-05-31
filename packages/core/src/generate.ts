@@ -1,7 +1,7 @@
 import { readdirSync, writeFileSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
-import { serialize } from "@antinesjs/schema";
-import type { SchemaIR } from "@antinesjs/schema";
+import { serialize } from "@antines/schema";
+import type { SchemaIR } from "@antines/schema";
 import { scanRouteFile } from "./scanner.js";
 import type { RouteConfig, ErrorDef } from "./define-route.js";
 

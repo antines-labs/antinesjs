@@ -1,7 +1,6 @@
 {
-  "name": "@antinesjs/worker",
+  "name": "@antines/worker",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",
@@ -13,8 +12,8 @@
     "lint": "oxlint"
   },
   "dependencies": {
-    "@antinesjs/protocol": "workspace:*",
-    "@antinesjs/schema": "workspace:*"
+    "@antines/protocol": "workspace:*",
+    "@antines/schema": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^25.9.1"

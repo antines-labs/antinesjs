@@ -1,5 +1,5 @@
-import { defineRoute } from "@antinesjs/core";
-import { s } from "@antinesjs/schema";
+import { defineRoute } from "@antines/core";
+import { s } from "@antines/schema";
 
 export default defineRoute({
   schema: {

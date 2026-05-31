@@ -3,13 +3,13 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "antinesjs",
+      "name": "antines",
       "dependencies": {
         "dotenv": "^17.2.2",
         "zod": "^4.1.13",
       },
       "devDependencies": {
-        "@antinesjs/config": "workspace:*",
+        "@antines/config": "workspace:*",
         "oxfmt": "^0.46.0",
         "oxlint": "^1.61.0",
         "turbo": "^2.8.12",
@@ -19,10 +19,10 @@
     "apps/example": {
       "name": "example",
       "dependencies": {
-        "@antinesjs/core": "workspace:*",
-        "@antinesjs/protocol": "workspace:*",
-        "@antinesjs/schema": "workspace:*",
-        "@antinesjs/worker": "workspace:*",
+        "@antines/core": "workspace:*",
+        "@antines/protocol": "workspace:*",
+        "@antines/schema": "workspace:*",
+        "@antines/worker": "workspace:*",
       },
       "devDependencies": {
         "@types/node": "^25.9.1",
@@ -53,39 +53,39 @@
       },
     },
     "packages/config": {
-      "name": "@antinesjs/config",
+      "name": "@antines/config",
       "version": "0.0.0",
     },
     "packages/core": {
-      "name": "@antinesjs/core",
+      "name": "@antines/core",
       "version": "0.1.0",
       "dependencies": {
-        "@antinesjs/schema": "workspace:*",
+        "@antines/schema": "workspace:*",
       },
       "devDependencies": {
         "@types/node": "^25.9.1",
       },
     },
     "packages/protocol": {
-      "name": "@antinesjs/protocol",
+      "name": "@antines/protocol",
       "version": "0.1.0",
       "dependencies": {
-        "@antinesjs/schema": "workspace:*",
+        "@antines/schema": "workspace:*",
       },
       "devDependencies": {
         "@types/node": "^25.9.1",
       },
     },
     "packages/schema": {
-      "name": "@antinesjs/schema",
+      "name": "@antines/schema",
       "version": "0.1.0",
     },
     "packages/worker": {
-      "name": "@antinesjs/worker",
+      "name": "@antines/worker",
       "version": "0.1.0",
       "dependencies": {
-        "@antinesjs/protocol": "workspace:*",
-        "@antinesjs/schema": "workspace:*",
+        "@antines/protocol": "workspace:*",
+        "@antines/schema": "workspace:*",
       },
       "devDependencies": {
         "@types/node": "^25.9.1",
@@ -95,15 +95,15 @@
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
 
-    "@antinesjs/config": ["@antinesjs/config@workspace:packages/config"],
+    "@antines/config": ["@antines/config@workspace:packages/config"],
 
-    "@antinesjs/core": ["@antinesjs/core@workspace:packages/core"],
+    "@antines/core": ["@antines/core@workspace:packages/core"],
 
-    "@antinesjs/protocol": ["@antinesjs/protocol@workspace:packages/protocol"],
+    "@antines/protocol": ["@antines/protocol@workspace:packages/protocol"],
 
-    "@antinesjs/schema": ["@antinesjs/schema@workspace:packages/schema"],
+    "@antines/schema": ["@antines/schema@workspace:packages/schema"],
 
-    "@antinesjs/worker": ["@antinesjs/worker@workspace:packages/worker"],
+    "@antines/worker": ["@antines/worker@workspace:packages/worker"],
 
     "@emnapi/runtime": ["@emnapi/runtime@1.10.0", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-ewvYlk86xUoGI0zQRNq/mC+16R1QeDlKQy21Ki3oSYXNgLb45GV1P6A0M+/s6nyCuNDqe5VpaY84BzXGwVbwFA=="],
 
