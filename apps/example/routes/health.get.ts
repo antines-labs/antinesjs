@@ -1,5 +1,5 @@
-import { defineRoute } from '@antinesjs/core'
-import { s } from '@antinesjs/schema'
+import { defineRoute } from "@antinesjs/core";
+import { s } from "@antinesjs/schema";
 
 export default defineRoute({
   schema: {
@@ -8,4 +8,4 @@ export default defineRoute({
       uptime: s.number(),
     }),
   },
-})
+});

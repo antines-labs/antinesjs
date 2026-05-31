@@ -1,1 +1,1 @@
-export { WorkerRuntime } from './runtime.js'
+export { WorkerRuntime } from "./runtime.js";

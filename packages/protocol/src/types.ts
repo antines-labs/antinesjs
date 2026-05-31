@@ -17,22 +17,22 @@ export enum FieldCategory {
 
 // Mirrors Go's FieldLayout
 export interface FieldLayout {
-  name: string
-  fieldType: FieldType
-  category: FieldCategory
-  offset: number    // byte offset in fixed section, or index in offset table
-  size: number      // byte size (0 for variable fields)
-  bitmaskBit: number // -1 if not optional
-  isOptional: boolean
-  isNullable: boolean
+  name: string;
+  fieldType: FieldType;
+  category: FieldCategory;
+  offset: number; // byte offset in fixed section, or index in offset table
+  size: number; // byte size (0 for variable fields)
+  bitmaskBit: number; // -1 if not optional
+  isOptional: boolean;
+  isNullable: boolean;
 }
 
 // Mirrors Go's CompiledLayout
 export interface CompiledLayout {
-  fields: FieldLayout[]
-  fixedSize: number
-  bitmaskSize: number
-  variableCount: number
+  fields: FieldLayout[];
+  fixedSize: number;
+  bitmaskSize: number;
+  variableCount: number;
 }
 
 // Mirrors Go's Header
@@ -49,18 +49,18 @@ export enum MessageType {
 }
 
 export interface Header {
-  magic: number       // 0x414E5453
-  version: number     // 0x01
-  direction: Direction
-  msgType: MessageType
-  flags: number
-  requestId: number
-  handlerId: number
-  payloadLen: number
-  statusCode: number
-  reserved: Uint8Array
+  magic: number; // 0x414E5453
+  version: number; // 0x01
+  direction: Direction;
+  msgType: MessageType;
+  flags: number;
+  requestId: number;
+  handlerId: number;
+  payloadLen: number;
+  statusCode: number;
+  reserved: Uint8Array;
 }
 
-export const MAGIC = 0x414E5453
-export const HEADER_SIZE = 32
-export const SENTINEL_ABSENT = 0xFFFFFFFF
+export const MAGIC = 0x414e5453;
+export const HEADER_SIZE = 32;
+export const SENTINEL_ABSENT = 0xffffffff;

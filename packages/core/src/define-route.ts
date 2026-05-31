@@ -40,16 +40,14 @@ type TypeOf<T> = T extends { _type: infer U } ? U : Record<string, unknown>;
  * })
  * ```
  */
-export function defineRoute<In, Out>(
-  config: {
-    schema: {
-      input?: In;
-      output?: Out;
-      errors?: Record<string, ErrorDef>;
-    };
-    handler?: (ctx: TypeOf<In>) => Promise<TypeOf<Out>>;
-  },
-): RouteConfig<TypeOf<In>, TypeOf<Out>> {
+export function defineRoute<In, Out>(config: {
+  schema: {
+    input?: In;
+    output?: Out;
+    errors?: Record<string, ErrorDef>;
+  };
+  handler?: (ctx: TypeOf<In>) => Promise<TypeOf<Out>>;
+}): RouteConfig<TypeOf<In>, TypeOf<Out>> {
   if (!config.schema) {
     throw new Error("defineRoute: schema is required");
   }

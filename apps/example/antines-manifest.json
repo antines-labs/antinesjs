@@ -11,9 +11,7 @@
       "schema": {
         "input": {
           "type": "object",
-          "fieldOrder": [
-            "name"
-          ],
+          "fieldOrder": ["name"],
           "fields": {
             "name": {
               "schema": {
@@ -31,9 +29,7 @@
         },
         "output": {
           "type": "object",
-          "fieldOrder": [
-            "message"
-          ],
+          "fieldOrder": ["message"],
           "fields": {
             "message": {
               "schema": {
@@ -58,10 +54,7 @@
       "schema": {
         "input": {
           "type": "object",
-          "fieldOrder": [
-            "message",
-            "autor"
-          ],
+          "fieldOrder": ["message", "autor"],
           "fields": {
             "message": {
               "schema": {
@@ -84,9 +77,7 @@
         },
         "output": {
           "type": "object",
-          "fieldOrder": [
-            "echoed"
-          ],
+          "fieldOrder": ["echoed"],
           "fields": {
             "echoed": {
               "schema": {
@@ -111,10 +102,7 @@
       "schema": {
         "output": {
           "type": "object",
-          "fieldOrder": [
-            "status",
-            "uptime"
-          ],
+          "fieldOrder": ["status", "uptime"],
           "fields": {
             "status": {
               "schema": {

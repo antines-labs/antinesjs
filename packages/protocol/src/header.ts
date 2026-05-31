@@ -1,30 +1,24 @@
-import {
-  Direction,
-  MessageType,
-  MAGIC,
-  HEADER_SIZE,
-  type Header,
-} from './types.js'
+import { Direction, MessageType, MAGIC, HEADER_SIZE, type Header } from "./types.js";
 
 /**
  * Encode a Header into a 32-byte buffer.
  */
 export function encodeHeader(h: Header): ArrayBuffer {
-  const buf = new ArrayBuffer(HEADER_SIZE)
-  const dv = new DataView(buf)
+  const buf = new ArrayBuffer(HEADER_SIZE);
+  const dv = new DataView(buf);
 
-  dv.setUint32(0, h.magic, true)       // offset 0: magic
-  dv.setUint8(4, h.version)             // offset 4: version
-  dv.setUint8(5, h.direction)           // offset 5: direction
-  dv.setUint8(6, h.msgType)            // offset 6: msgType
-  dv.setUint8(7, h.flags)              // offset 7: flags
-  dv.setUint32(8, h.requestId, true)   // offset 8: requestId
-  dv.setUint32(12, h.handlerId, true)  // offset 12: handlerId
-  dv.setUint32(16, h.payloadLen, true) // offset 16: payloadLen
-  dv.setUint32(20, h.statusCode, true) // offset 20: statusCode
+  dv.setUint32(0, h.magic, true); // offset 0: magic
+  dv.setUint8(4, h.version); // offset 4: version
+  dv.setUint8(5, h.direction); // offset 5: direction
+  dv.setUint8(6, h.msgType); // offset 6: msgType
+  dv.setUint8(7, h.flags); // offset 7: flags
+  dv.setUint32(8, h.requestId, true); // offset 8: requestId
+  dv.setUint32(12, h.handlerId, true); // offset 12: handlerId
+  dv.setUint32(16, h.payloadLen, true); // offset 16: payloadLen
+  dv.setUint32(20, h.statusCode, true); // offset 20: statusCode
   // offset 24-31: reserved (zeros)
 
-  return buf
+  return buf;
 }
 
 /**
@@ -32,14 +26,14 @@ export function encodeHeader(h: Header): ArrayBuffer {
  */
 export function decodeHeader(buf: ArrayBuffer): Header {
   if (buf.byteLength < HEADER_SIZE) {
-    throw new Error(`Header too small: ${buf.byteLength} bytes`)
+    throw new Error(`Header too small: ${buf.byteLength} bytes`);
   }
 
-  const dv = new DataView(buf)
+  const dv = new DataView(buf);
 
-  const magic = dv.getUint32(0, true)
+  const magic = dv.getUint32(0, true);
   if (magic !== MAGIC) {
-    throw new Error(`Invalid magic: 0x${magic.toString(16)}`)
+    throw new Error(`Invalid magic: 0x${magic.toString(16)}`);
   }
 
   return {
@@ -53,14 +47,14 @@ export function decodeHeader(buf: ArrayBuffer): Header {
     payloadLen: dv.getUint32(16, true),
     statusCode: dv.getUint32(20, true),
     reserved: new Uint8Array(buf, 24, 8),
-  }
+  };
 }
 
 /**
  * Read a header from an ArrayBuffer-like source.
  */
 export function readHeader(buffer: ArrayBuffer): Header {
-  return decodeHeader(buffer)
+  return decodeHeader(buffer);
 }
 
 /**
@@ -85,5 +79,5 @@ export function newHeader(
     payloadLen,
     statusCode,
     reserved: new Uint8Array(8),
-  }
+  };
 }

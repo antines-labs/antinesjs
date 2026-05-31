@@ -180,8 +180,11 @@ type InferFieldType<T> =
       : T extends { _type: infer U }
         ? U
         : T extends FieldDef
-          ? (T["optional"] extends true ? T["schema"]["_type"] | undefined : T["schema"]["_type"])
-            | (T["nullable"] extends true ? null : never)
+          ?
+              | (T["optional"] extends true
+                  ? T["schema"]["_type"] | undefined
+                  : T["schema"]["_type"])
+              | (T["nullable"] extends true ? null : never)
           : never;
 
 export class ObjectSchema<Fields = Record<string, SchemaNode | FieldDef>> {

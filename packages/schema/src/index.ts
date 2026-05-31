@@ -62,7 +62,8 @@ export const s = {
   enum: <const T extends readonly string[]>(values: T) => new EnumSchema(values),
   date: () => new DateSchema(),
   array: <T extends SchemaNode>(items: T) => new ArraySchema<T>(items),
-  object: <T extends Record<string, SchemaNode | FieldDef>>(fields: T) => new ObjectSchema<T>(fields),
+  object: <T extends Record<string, SchemaNode | FieldDef>>(fields: T) =>
+    new ObjectSchema<T>(fields),
   nullable: <T extends SchemaNode>(inner: T) => new NullableSchema<T>(inner),
   optional: <T extends SchemaNode>(inner: T) => new OptionalSchema<T>(inner),
   serialize,

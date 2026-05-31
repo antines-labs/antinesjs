@@ -1,6 +1,6 @@
-export { calculateLayout } from './layout.js'
-export { encodeHeader, decodeHeader, readHeader, newHeader } from './header.js'
-export { serializeOutput, deserializeInput } from './serialize.js'
+export { calculateLayout } from "./layout.js";
+export { encodeHeader, decodeHeader, readHeader, newHeader } from "./header.js";
+export { serializeOutput, deserializeInput } from "./serialize.js";
 
 export {
   FieldType,
@@ -10,9 +10,5 @@ export {
   MAGIC,
   HEADER_SIZE,
   SENTINEL_ABSENT,
-} from './types.js'
-export type {
-  FieldLayout,
-  CompiledLayout,
-  Header,
-} from './types.js'
+} from "./types.js";
+export type { FieldLayout, CompiledLayout, Header } from "./types.js";
