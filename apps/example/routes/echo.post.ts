@@ -1,5 +1,5 @@
-import { defineRoute } from "@antinesjs/core";
-import { s } from "@antinesjs/schema";
+import { defineRoute } from '@antines/core'
+import { s } from '@antines/schema'
 
 export default defineRoute({
   schema: {
@@ -12,6 +12,6 @@ export default defineRoute({
     }),
   },
   handler: async (ctx) => {
-    return { echoed: `Echo: ${ctx.message} (by ${ctx.autor})` };
+    return { echoed: `Echo: ${ctx.message} (by ${ctx.autor})` }
   },
-});
+})
