@@ -1,7 +1,7 @@
 import { generateManifest } from '@antinesjs/core'
 import { resolve } from 'node:path'
 
-const appDir = resolve(import.meta.dir, '..')
+const appDir = resolve(import.meta.dirname, '..')
 const routesDir = resolve(appDir, 'routes')
 const outFile = resolve(appDir, 'antines-manifest.json')
 
