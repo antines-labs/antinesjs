@@ -35,5 +35,3 @@ jobs:
       - name: Publish to npm via Trusted Publishing
         if: steps.changesets.outputs.hasChangesets == 'false'
         run: bunx changeset publish --provenance
-        env:
-          NPM_CONFIG_PROVENANCE: "true"
