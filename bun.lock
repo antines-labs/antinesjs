@@ -68,6 +68,17 @@
       "name": "@antinesjs/schema",
       "version": "0.1.0",
     },
+    "packages/worker": {
+      "name": "@antinesjs/worker",
+      "version": "0.1.0",
+      "dependencies": {
+        "@antinesjs/protocol": "workspace:*",
+        "@antinesjs/schema": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/node": "^25.9.1",
+      },
+    },
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
@@ -79,6 +90,8 @@
     "@antinesjs/protocol": ["@antinesjs/protocol@workspace:packages/protocol"],
 
     "@antinesjs/schema": ["@antinesjs/schema@workspace:packages/schema"],
+
+    "@antinesjs/worker": ["@antinesjs/worker@workspace:packages/worker"],
 
     "@emnapi/runtime": ["@emnapi/runtime@1.10.0", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-ewvYlk86xUoGI0zQRNq/mC+16R1QeDlKQy21Ki3oSYXNgLb45GV1P6A0M+/s6nyCuNDqe5VpaY84BzXGwVbwFA=="],
 

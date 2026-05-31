@@ -38,7 +38,7 @@ export type {
   FieldIR,
   NullableIR,
   OptionalIR,
-} from "./serialize.ts";
+} from "./serialize.js";
 
 /**
  * Schema DSL — entry point for defining schemas.

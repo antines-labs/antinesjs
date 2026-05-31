@@ -1,0 +1,9 @@
+{
+  "extends": "@antinesjs/config/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "types": ["node"],
+    "lib": ["ESNext"]
+  },
+  "include": ["src"]
+}
