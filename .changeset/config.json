@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3/schema.json",
-  "changelog": "@changesets/changelog-github",
+  "changelog": ["@changesets/changelog-github", { "repo": "antines-labs/antinesjs" }],
   "commit": false,
   "access": "public",
   "baseBranch": "main",
