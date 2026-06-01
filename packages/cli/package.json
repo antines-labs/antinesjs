@@ -1,10 +1,12 @@
 {
   "name": "@antines/cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "main": "dist/bin/antines.js",
   "types": "dist/bin/antines.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "bin": {
     "antines": "./dist/bin/antines.js"
   },
