@@ -30,6 +30,19 @@
         "@types/node": "^25.9.1",
       },
     },
+    "packages/cli": {
+      "name": "@antines/cli",
+      "version": "0.1.0",
+      "bin": {
+        "antines": "./dist/bin/antines.js",
+      },
+      "dependencies": {
+        "@antines/core": "workspace:*",
+      },
+      "devDependencies": {
+        "@types/node": "^25.9.1",
+      },
+    },
     "packages/config": {
       "name": "@antines/config",
       "version": "0.0.0",
@@ -71,6 +84,8 @@
     },
   },
   "packages": {
+    "@antines/cli": ["@antines/cli@workspace:packages/cli"],
+
     "@antines/config": ["@antines/config@workspace:packages/config"],
 
     "@antines/core": ["@antines/core@workspace:packages/core"],

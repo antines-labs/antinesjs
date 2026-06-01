@@ -46,7 +46,7 @@ export class WorkerRuntime {
   private handlers = new Map<number, HandlerEntry>();
   private buf = new Uint8Array(0);
 
-  async start(socketPath: string, manifestPath: string): Promise<void> {
+  async start(socketPath: string, manifestPath: string, baseDir?: string): Promise<void> {
     const manifestRaw = readFileSync(manifestPath, "utf-8");
     const manifest: Manifest = JSON.parse(manifestRaw);
 
@@ -57,7 +57,8 @@ export class WorkerRuntime {
     for (const route of manifest.routes) {
       if (!route.hasHandler) continue;
 
-      const handlerFile = resolve(dirname(manifestPath), route.handlerFile);
+      const rootDir = baseDir ?? dirname(manifestPath);
+      const handlerFile = resolve(rootDir, route.handlerFile);
       const mod = await import(handlerFile);
       const defaultExport = mod.default as
         | { handler?: (ctx: Record<string, unknown>) => Promise<Record<string, unknown>> }

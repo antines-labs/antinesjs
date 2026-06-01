@@ -3,10 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "generate": "bun run scripts/generate-manifest.ts",
-    "start": "bun run worker-entry.ts"
+    "generate": "bun ../../packages/cli/dist/bin/antines.js generate",
+    "dev": "bun ../../packages/cli/dist/bin/antines.js dev",
+    "start": "bun ../../packages/cli/dist/bin/antines.js start"
   },
   "dependencies": {
+    "@antines/cli": "workspace:*",
     "@antines/core": "workspace:*",
     "@antines/protocol": "workspace:*",
     "@antines/schema": "workspace:*",

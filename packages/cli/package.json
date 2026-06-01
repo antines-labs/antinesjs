@@ -1,18 +1,17 @@
 {
-  "name": "@antines/worker",
+  "name": "@antines/cli",
   "version": "0.1.0",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/bin/antines.js",
+  "types": "dist/bin/antines.d.ts",
   "files": ["dist"],
+  "bin": {
+    "antines": "./dist/bin/antines.js"
+  },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./entry": {
-      "import": "./dist/entry.js",
-      "types": "./dist/entry.d.ts"
+      "import": "./dist/bin/antines.js",
+      "types": "./dist/bin/antines.d.ts"
     }
   },
   "scripts": {
@@ -21,8 +20,7 @@
     "lint": "oxlint"
   },
   "dependencies": {
-    "@antines/protocol": "workspace:*",
-    "@antines/schema": "workspace:*"
+    "@antines/core": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^25.9.1"
@@ -33,6 +31,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/antines-labs/antinesjs.git",
-    "directory": "packages/worker"
+    "directory": "packages/cli"
   }
 }
