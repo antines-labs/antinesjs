@@ -14,18 +14,16 @@ export async function dev(opts: DevOptions) {
   const cwd = process.cwd();
   const manifest = resolve(cwd, ".antines", "manifest.json");
 
-  // 1. Generate manifest
   console.log("[antines] Generating manifest...");
   await generate({ routesDir: opts.routesDir, outFile: manifest });
 
-  // 2. Find binaries
   const goRuntime = findGoRuntime();
   const bun = findBun();
   const workerEntry = findWorkerEntry();
 
   console.log(`[antines] Starting dev server on port ${opts.port}...`);
 
-  // 3. Spawn Go runtime
+  // spawn Go runtime
   const proc = spawn(goRuntime, [
     `--port=${opts.port}`,
     `--workers=${opts.workers}`,

@@ -22,9 +22,9 @@ export function findGoRuntime(): string {
   }
 
   throw new Error(
-    "antines-dev not found in PATH.\n" +
+    "antines-dev/antines not found in PATH.\n" +
     "Install it first:\n" +
-    "  cd core && make build-dev",
+    "  Install in: https://github.com/antines-labs/core/releases",
   );
 }
 
