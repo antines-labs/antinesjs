@@ -4,12 +4,11 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 APP_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-antines_DIR="$(cd "$APP_DIR/../.." && pwd)"
-CORE_DIR="$(cd "$antines_DIR/../core" && pwd)"
+CORE_DIR="$(cd "$APP_DIR/../../../core" && pwd)"
 
 echo "=== Step 1: Generate manifest ==="
 cd "$APP_DIR"
-bun run scripts/generate-manifest.ts
+bun run generate
 
 echo ""
 echo "=== Step 2: Build Go server ==="
@@ -24,10 +23,10 @@ mkdir -p dist
 SERVER_PORT=3456
 ./dist/server \
   --port $SERVER_PORT \
-  --manifest "$APP_DIR/antines-manifest.json" \
+  --manifest "$APP_DIR/.antines/manifest.json" \
   --workers 1 \
   --timeout 10s \
-  --worker-entry "$APP_DIR/worker-entry.ts" \
+  --worker-entry "$APP_DIR/node_modules/@antines/worker/dist/entry.js" \
   --bun "$(which bun)" &
 SERVER_PID=$!
 
@@ -112,7 +111,6 @@ fi
 echo "Test 6: POST /echo with invalid body"
 RESP=$(curl -s -X POST "http://localhost:$SERVER_PORT/echo" -H "Content-Type: application/json" -d '{"message":123}')
 echo "  Response: $RESP"
-# 123 is a number, not a string, so validation should fail
 if echo "$RESP" | python3 -c "import sys,json; d=json.load(sys.stdin); assert 'error' in d, f'expected error, got {d}'" 2>/dev/null; then
   echo "  ✓ PASS"
 else

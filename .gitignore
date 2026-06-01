@@ -50,5 +50,6 @@ coverage
 tmp
 temp
 
-# npm
-.npmrc
+# Antines
+.antines
+antines-manifest.json

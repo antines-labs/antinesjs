@@ -1,12 +1,12 @@
-import { WorkerRuntime } from "@antines/worker";
 import { parseArgs } from "node:util";
+import { WorkerRuntime } from "./runtime.js";
 
-const args = parseArgs({
+const { socket, manifest } = parseArgs({
   options: {
     socket: { type: "string", required: true },
     manifest: { type: "string", required: true },
   },
-});
+}).values as { socket: string; manifest: string };
 
 const runtime = new WorkerRuntime();
 
@@ -21,7 +21,7 @@ process.on("SIGINT", () => {
 });
 
 try {
-  await runtime.start(args.values.socket!, args.values.manifest!);
+  await runtime.start(socket, manifest, process.cwd());
 } catch (err) {
   console.error("Worker failed:", err);
   process.exit(1);

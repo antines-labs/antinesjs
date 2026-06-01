@@ -3,5 +3,5 @@
   "compilerOptions": {
     "outDir": "dist"
   },
-  "include": ["routes", "scripts", "worker-entry.ts"]
+  "include": ["routes"]
 }
